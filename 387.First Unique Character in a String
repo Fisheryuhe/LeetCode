@@ -1,0 +1,30 @@
+// https://leetcode.com/problems/first-unique-character-in-a-string/
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int count[26] = {0};
+        for(int i = 0; i < s.length(); i++) {
+            ++count[s[i] - 'a'];
+    }
+    char ch[26] = {0};
+    int j = 0;
+    int flag = 0;
+    for(int i = 0; i < 26; i++) {
+        if(count[i] == 1){
+            ch[j++] = 'a' + i;
+            flag ++;
+        }
+    }
+    if (flag == 0) {
+     return -1;
+     }
+    int min = s.find(ch[0]);
+    for (int i = 1; i < j; i++ ) {
+        int tmp = s.find(ch[i]);
+        if(tmp < min){
+            min = tmp;
+        }
+    }
+    return min;
+    }
+};
