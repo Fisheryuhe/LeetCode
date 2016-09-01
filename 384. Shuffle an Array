@@ -1,0 +1,26 @@
+// https://leetcode.com/problems/shuffle-an-array/
+
+class Solution {
+private :
+    vector<int> v;
+public:
+    Solution(vector<int> nums) {
+        v = nums;
+    }
+    
+    /** Resets the array to its original configuration and return it. */
+    vector<int> reset() {
+        return v;
+
+    }
+    
+    /** Returns a random shuffling of the array. */
+    vector<int> shuffle() {
+      vector<int> res = v;
+      for(int i = 0; i < v.size(); i++) {
+         int j = rand()%v.size();
+         swap(res[i],res[j]);
+      }
+        return res;
+    }
+};
